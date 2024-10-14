@@ -1,0 +1,57 @@
+﻿@page
+@using WHM.Data.Dtos.Responses;
+@model WHM.FE.Pages.Product.ProductListModel
+@{
+    var products = (List<ProductResponseDto>)ViewData["products"];
+}
+<link rel="stylesheet" href="/css/ProductList.css">
+<div class="main-container">
+    <div class="tabular--wrapper">
+        <h3 class="header--title">Product Manager</h3>
+        <div class="d-flex mt-4">
+            <a class="button--link me-3" href="/Product/AddProduct">
+                <button class="btn btn-success" id="Create"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;Create</button>
+            </a>
+            <a class="button--link" href="/Product/Import">
+                <button class="btn btn-success" id="Create"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;Import</button>
+            </a>
+        </div>
+    </div>
+    <div class="tabular--wrapper">
+        <h3 class="header--title">Product List</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Product ID</th>
+                        <th>Product Name</th>
+                        <th>Category Name</th>
+                        <th>Product Description</th>
+                        <th>EstimatedPrice</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var (value, i) in products.Select((value, i) => (value, i)))
+                    {
+                        <tr>
+                            <td>@(i + 1)</td>
+                            <td>@value.ProductId</td>
+                            <td>@value.ProductName</td>
+                            <td>@value.CategoryName</td>
+                            <td>@value.ProductDescription</td>
+                            <td>@value.EstimatedPrice</td>
+                            <td>
+                                <a href="#">
+                                    <button class="btn btn-success" id="Create">Edit</button>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+﻿@page
+@using static Whm.Infrastructure.Enums.SystemEnum;
+@model WHM.FE.Pages.User.RegisterModel
+@{
+    string message = (string)ViewData["message"];
+    string password = (string)ViewData["pass"];
+}
+<link rel="stylesheet" href="/css/ProductList.css" />
+<div class="main-container">
+    <div class="tabular--wrapper">
+        <h3 class="header--title">Register User</h3>
+        <div class="b row">
+            <form class="mt-5 col-md-4" method="post">
+                <label class="form-label"> Username :</label>
+                <input class="form-control" name="UserName" type="text" placeholder="Input Username" /></br>
+                <label class="form-label"> Role :</label>
+                <select class="form-select" name="RoleId">
+                    <option value="@((short)UserRoles.Owner)">Owner</option>
+                    <option value="@((short)UserRoles.Manager)">Manager</option>
+                </select>
+                <button class="btn btn-success mt-5">Save</button>
+            </form>
+
+            <div>
+                @if (!string.IsNullOrEmpty(message))
+                {
+                    <p>@message</p>
+                }
+
+                @if(!string.IsNullOrEmpty(password)){
+                    <p>Current password: @password</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>

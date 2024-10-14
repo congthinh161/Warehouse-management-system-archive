@@ -1,0 +1,33 @@
+﻿@page
+@model WHM.FE.Pages.Category.AddCategoryModel
+@{
+    var mess = ViewData["Mess"];
+}
+<link rel="stylesheet" href="/css/ProductList.css" />
+<div class="main-container">
+    <div class="tabular--wrapper">
+        @if (mess != null)
+        {
+            if (mess.Equals("Add Success"))
+            {
+                <div class="alert alert-success">@mess</div>
+
+            }
+            else
+            {
+
+                <div class="alert alert-danger">@mess</div>
+            }
+        }
+        <h3 class="header--title">Add Category</h3>
+        <div class="b row">
+            <form class="mt-5 col-md-4" method="post">
+                <label class="form-label"> Category Name :</label>
+                <input class="form-control" name="CategoryName" type="text" placeholder="Input Category Name" /></br>
+                <label class="form-label"> Category Description :</label>
+                <textarea class="form-control" name="CategoryDescription" style="height:150px;" placeholder="Description Category Here..."></textarea>
+                <button class="btn btn-success mt-5">Save</button>
+            </form>
+        </div>
+    </div>
+</div>

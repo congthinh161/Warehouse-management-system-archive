@@ -1,0 +1,27 @@
+﻿@page
+@model WHM.FE.Pages.Attribute.AddAttributeModel
+@{
+    string message = (string)ViewData["message"];
+}
+<link rel="stylesheet" href="/css/ProductList.css" />
+<div class="main-container">
+    <div class="tabular--wrapper">
+        <h3 class="header--title">Add new attribute</h3>
+        <div class="b row">
+            <form class="mt-5 col-md-4" method="post">
+                <label class="form-label"> Attribute Name :</label>
+                <input class="form-control" name="AttributeName" type="text" placeholder="Input Attribute Name" /></br>
+                <label class="form-label"> Attribute Description :</label>
+                <input class="form-control" name="AttributeDescription" type="text" placeholder="Input Attribute Description" /></br>
+                <button class="btn btn-success mt-5">Save</button>
+            </form>
+
+            <div>
+                @if (!string.IsNullOrEmpty(message))
+                {
+                    <p>@message</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+﻿@page
+@model WHM.FE.Pages.Common.DashboardModel
+@{
+}
+<link rel="stylesheet" href="/css/Dashboard.css" />
+<div class="main-container">
+    <div class="tabular--wrapper">
+        <div class="main-title">
+            @*<i class="fa-solid fa-chevron-right fa-xl"></i>*@
+            <h2 class="header--title">DASHBOARD</h2>
+        </div>
+        <div class="main-cards">
+            <div class="card">
+                <div class="card-inner">
+                    <h2>Products</h2>
+                    <div>
+                        <i class="fas fa-solid fa-box"></i>
+                        <span></span>
+                    </div>
+                </div>
+                <h1>@Model.countPro</h1>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <h2>Bills</h2>
+                    <div>
+                        <i class="fas fa-solid fa-box"></i>
+                        <span></span>
+                    </div>
+                </div>
+                <h1>10</h1>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <h2>Supplier</h2>
+                    <div>
+                        <i class="fas fa-solid fa-box"></i>
+                        <span></span>
+                    </div>
+                </div>
+                <h1>@Model.countsup</h1>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <h2>Sold</h2>
+                    <div>
+                        <i class="fas fa-solid fa-box"></i>
+                        <span></span>
+                    </div>
+                </div>
+                <h1>10</h1>
+            </div>
+        </div>
+    </div>
+</div>

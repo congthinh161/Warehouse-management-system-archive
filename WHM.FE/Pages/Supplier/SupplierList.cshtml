@@ -1,0 +1,60 @@
+﻿@page
+@model WHM.FE.Pages.Supplier.SupplierListModel
+@{
+}
+<link rel="stylesheet" href="/css/ProductList.css">
+<div class="main-container">
+    <div class="tabular--wrapper">
+        <h3 class="header--title">Supplier Manager</h3>
+        <div class="d-flex mt-4">
+            <a class="button--link" href="/Supplier/AddSupplier">
+                <button class="btn btn-success" id="Create"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;Create</button>
+            </a>
+        </div>
+    </div>
+    <div class="tabular--wrapper">
+        <h3 class="header--title">Supplier List</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Supplier ID</th>
+                        <th>DisplayName</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>MoreInfo</th>
+                        <th>Create Date</th>
+                        <th>Create User</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.suppliers != null)
+                    {
+                        int count = 1;
+                        @foreach (var item in Model.suppliers)
+                        {
+                            <tr>
+                                <td>@count</td>
+                                <td>@item.DisplayName</td>
+                                <td>@item.Address</td>
+                                <td>@item.Phone</td>
+                                <td>@item.Email</td>
+                                <td>@item.MoreInfo</td>
+                                <td>@item.CreateDate.ToShortDateString()</td>
+                                <td>@item.CreateUser</td>
+                                <td>
+                                    <a href="/Supplier/Edit?SuplierId=@item.SuplierId&DisplayName=@item.DisplayName&Address=@item.Address&Phone=@item.Phone&Email=@item.Email&MoreInfo=@item.MoreInfo">
+                                        <button class="btn btn-success" id="Create">Edit</button>
+                                    </a>
+                                </td>
+                            </tr>
+                            count++;
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

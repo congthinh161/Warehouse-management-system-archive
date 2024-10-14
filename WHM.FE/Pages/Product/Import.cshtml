@@ -1,0 +1,126 @@
+﻿@page
+@model WHM.FE.Pages.Product.ImportModel
+@{
+    var mess = ViewData["Mess"];
+}
+<link rel="stylesheet" href="/css/ProductList.css" />
+<div class="main-container">
+    <div class="tabular--wrapper">
+        @if (mess != null)
+        {
+            if (mess.Equals("Add Success"))
+            {
+                <div class="alert alert-success">@mess</div>
+
+            }
+            else
+            {
+
+                <div class="alert alert-danger">@mess</div>
+            }
+        }
+        <h3 class="header--title">Import Product</h3>
+        <div class="row">
+            <form class="mt-3 col-md-4" method="post">
+                <label class="form-label"> Supplier Name :</label>
+                <select class="form-select" id="SuplierId" name="SuplierId">
+                    @foreach (var item in Model.suppliers)
+                    {
+                        <option value="@item.SuplierId">@item.DisplayName</option>
+                    }
+                </select>
+                <label class="form-label"> PreMoney :</label>
+                <input class="form-control" disabled id="PreMoney" name="PreMoney" type="number" value="0" placeholder="Input Money" /></br>
+                <label class="form-label"> Description :</label>
+                <textarea class="form-control" id="Description" name="Description" style="height:150px;" placeholder="Description Here..."></textarea>
+                <select class="form-select" id="mySelect" name="ProductId">
+                    @foreach (var item in Model.products)
+                    {
+                        <option value="@item.ProductId">@item.ProductName</option>
+                    }
+                </select>
+                <label class="btn btn-primary" id="add">Add</label>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>Input Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <button type="submit" id="submit" class="btn btn-success mt-3">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#add").click(function () {
+            var productid = $("#mySelect").val();
+            var productName = $("#mySelect option:selected").text();
+            $('tbody').append(`<tr class="datalist">
+                                                <td><input type="text" name="ProductId" readonly value="${productid}"/></td>
+                                            <td><input type="text" readonly value="${productName}"/></td>
+                                            <td><input type="number" name="Quantity" value="1"/></td>
+                                            <td><input type="number" name="InputPrice" value="0"/></td>
+                                        </tr>
+                                        `)
+        })
+
+
+
+
+
+
+        $("#submit").click(function (e) {
+            e.preventDefault();
+            var dataList = [];
+            var preMoneyValue = $("#PreMoney").val();
+            var suplierid = $("#SuplierId").val();
+            var description = $("#Description").val();
+
+            $(".datalist").each(function () {
+                var productId = $(this).find("input[name='ProductId']").val();
+
+                var quantity = $(this).find("input[name='Quantity']").val();
+                var inputPrice = $(this).find("input[name='InputPrice']").val();
+
+                var rowData = {
+                    productId: productId,
+
+                    quantity: quantity,
+                    inputPrice: inputPrice
+                };
+
+                dataList.push(rowData);
+            });
+
+            let data = {
+                SuplierId: suplierid,
+                PreMoney: preMoneyValue,
+                Description: description,
+                ProductInputDetails: dataList
+            }
+            $.ajax({
+                type: "Post",
+                url: "/Product/Import",
+                data:
+                {
+                    SuplierId: suplierid,
+                    PreMoney: preMoneyValue,
+                    Description: description,
+                    ProductInputDetails: dataList
+                },
+                success: (response,status,xhr) =>{
+                    if(xhr.status == 200){
+                        window.location.href = "/Product/ProductList"
+                    }
+                }
+            })
+        })
+    })
+</script>

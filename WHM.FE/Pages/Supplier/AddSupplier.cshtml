@@ -1,0 +1,39 @@
+﻿@page
+@model WHM.FE.Pages.Supplier.AddSupplierModel
+@{
+    var mess = ViewData["Mess"];
+}
+<link rel="stylesheet" href="/css/ProductList.css" />
+<div class="main-container">
+    <div class="tabular--wrapper">
+        @if (mess != null)
+        {
+            if (mess.Equals("Add Success"))
+            {
+                <div class="alert alert-success">@mess</div>
+
+            }
+            else
+            {
+
+                <div class="alert alert-danger">@mess</div>
+            }
+        }
+        <h3 class="header--title">Add Supplier</h3>
+        <div class="b row">
+            <form class="mt-5 col-md-4" method="post">
+                <label class="form-label"> DisplayName :</label>
+                <input class="form-control" name="DisplayName" type="text" placeholder="Input Name" /></br>
+                <label class="form-label"> Address :</label>
+                <input class="form-control" name="Address" type="text" placeholder="Input Address" /></br>
+                <label class="form-label"> Phone :</label>
+                <input class="form-control" name="Phone" type="text" placeholder="Input Phone" /></br>
+                <label class="form-label"> Email :</label>
+                <input class="form-control" name="Email" type="text" placeholder="Input Email" /></br>
+                <label class="form-label"> MoreInfo :</label>
+                <textarea class="form-control" name="MoreInfo" style="height:150px;" placeholder="MoreInfo Here..."></textarea>
+                <button class="btn btn-success mt-5">Save</button>
+            </form>
+        </div>
+    </div>
+</div>

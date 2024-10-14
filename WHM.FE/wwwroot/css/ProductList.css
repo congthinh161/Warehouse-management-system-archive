@@ -1,0 +1,91 @@
+﻿.main-container {
+    margin-left: 100px;
+    grid-area: main;
+    overflow-y: auto;
+    padding: 20px 20px;
+}
+
+.header--title {
+    color: rgba(113, 99, 186,255);
+    font-weight: 600;
+}
+
+.tabular--wrapper {
+    background: #fff;
+    margin-top: 1rem;
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+.table-container {
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: rgba(113, 99, 186,255);
+    color: #fff;
+}
+
+th {
+    padding: 15px;
+    text-align: left;
+}
+
+    th:first-child {
+        border-left-style: solid;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    th:last-child {
+        border-right-style: solid;
+        border-bottom-right-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+tbody {
+    background: #f2f2f2;
+}
+
+td {
+    padding: 15px;
+    font-size: 14px;
+    color: #333;
+}
+
+    td:first-child {
+        border-left-style: solid;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    td:last-child {
+        border-right-style: solid;
+        border-bottom-right-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+tr:nth-child(even) {
+    background: #fff;
+}
+
+tfoot {
+    background: rgba(113, 99, 186,255);
+    font-weight: bold;
+}
+
+    tfoot td {
+        padding: 15px;
+        color: #fff;
+    }
+
+.table-container button {
+    color: green;
+    background: none;
+    cursor: pointer;
+}

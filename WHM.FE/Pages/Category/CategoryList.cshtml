@@ -1,0 +1,66 @@
+﻿@page
+@model WHM.FE.Pages.Category.CategoryListModel
+@{
+}
+<link rel="stylesheet" href="/css/ProductList.css">
+<div class="main-container">
+    <div class="tabular--wrapper">
+        <h3 class="header--title">Category Manager</h3>
+        <div class="d-flex mt-4">
+            <a class="button--link" href="/Category/AddCategory">
+                <button class="btn btn-success" id="Create"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;Create</button>
+            </a> &nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="button--link" href="/Category/EditAttribute">
+                <button class="btn btn-success" id="Create"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;Add Attribute</button>
+            </a>
+        </div>
+    </div>
+
+    <div class="tabular--wrapper">
+        <h3 class="header--title">Category List</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Category Name</th>
+                        <th>Category Description</th>
+                        <th>Create Date</th>
+                        <th>Create User</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.categories != null)
+                    {
+                        int count = 1;
+                        @foreach (var item in Model.categories)
+                        {
+                            <tr>
+                                <td>@count</td>
+                                <td>@item.CategoryName</td>
+                                <td>@item.CategoryDescription</td>
+                                <td>@item.CreateDate.ToLocalTime().ToShortDateString()</td>
+                                <td>@item.CreateUser</td>
+                                <td>
+                                    <a href="/Category/Edit?CategoryId=@item.CategoryId&CategoryName=@item.CategoryName&CategoryDescription=@item.CategoryDescription">
+                                        <button class="btn btn-success" id="Create">Edit</button>
+                                    </a>
+                                </td>
+                            </tr>
+                            count++;
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#btn_edit").click(function () {
+            $(".edit").toggleClass("active");
+
+        });
+    });
+</script>

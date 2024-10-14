@@ -1,0 +1,44 @@
+﻿@page
+@model WHM.FE.Pages.Category.EditAttributeModel
+@{
+    var mess = ViewData["Mess"];
+}
+<link rel="stylesheet" href="/css/ProductList.css" />
+<div class="main-container">
+    <div class="tabular--wrapper">
+        @if (mess != null)
+        {
+            if (mess.Equals("Add Success"))
+            {
+                <div class="alert alert-success">@mess</div>
+
+            }else
+            {
+
+                <div class="alert alert-danger">@mess</div>
+            }
+        }
+        <div class="edit mt-5">
+            <h3 class="header--title">Add Category Attribute</h3>
+            <div class="row">
+                <form class="mt-3 col-md-4" method="post">
+                    <label class="form-label"> Category Name :</label>
+                    <select name="CategoryId" class="form-select">
+                        @foreach (var item in Model.categoryResponseDtos)
+                        {
+                            <option value="@item.CategoryId">@item.CategoryName</option>
+                        }
+                    </select>
+                    <label class="form-label"> Attribute :</label>
+                    <select name="AttributeId" class="form-select">
+                        @foreach (var item in Model.attributeResponseDtos)
+                        {
+                            <option value="@item.AttributeId">@item.AttributeName</option>
+                        }
+                    </select>
+                    <button class="btn btn-success mt-3">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+﻿@page
+@model WHM.FE.Pages.Category.EditModel
+@{
+}
+<link rel="stylesheet" href="/css/ProductList.css" />
+<div class="main-container">
+    <div class="tabular--wrapper">
+        <div class="edit mt-5">
+            <h3 class="header--title">Update Category</h3>
+            <div class="row">
+                <form class="mt-3 col-md-4" method="post">
+                    <input class="visually-hidden" name="CategoryId" value="@Model.categoryId" />
+                    <label class="form-label"> Category Name :</label>
+                    <input class="form-control" disabled name="CategoryName" type="text" value="@Model.categoryName" placeholder="Input Category Name" /></br>
+                    <label class="form-label"> Category Description :</label>
+                    <textarea class="form-control" name="CategoryDescription" asp-for="categoryDescription" style="height:150px;" placeholder="Description Category Here..."></textarea>
+                    <button class="btn btn-success mt-3">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

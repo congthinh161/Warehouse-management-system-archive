@@ -1,0 +1,48 @@
+﻿@page
+@using WHM.Data.Dtos.Responses;
+@model WHM.FE.Pages.Attribute.IndexModel
+@{
+    var attributes = (List<AttributeResponseDto>)ViewData["attributes"];
+}
+<link rel="stylesheet" href="/css/ProductList.css">
+<div class="main-container">
+    <div class="tabular--wrapper">
+        <h3 class="header--title">Attribute Manager</h3>
+        <div class="d-flex mt-4">
+            <a class="button--link" href="/Attribute/AddAttribute">
+                <button class="btn btn-success" id="Create"><i class="fa-solid fa-user-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;Create</button>
+            </a>
+        </div>
+    </div>
+
+    <div class="tabular--wrapper">
+        <h3 class="header--title">Attribute List</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Attribute Name</th>
+                        <th>Attribute Description</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var (value, i) in attributes.Select((value, i) => (value, i)))
+                    {
+                        <tr>
+                            <td>@(i + 1)</td>
+                            <td>@value.AttributeName</td>
+                            <td>@value.AttributeDescription</td>
+                            <td>
+                                <a href="#">
+                                    <button class="btn btn-success" id="Create">Edit</button>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

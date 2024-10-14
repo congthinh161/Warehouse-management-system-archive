@@ -1,0 +1,125 @@
+﻿@{
+    var nameSession = Context.Session.GetString("NAME");
+    var name = string.IsNullOrWhiteSpace(nameSession) ? "" : nameSession;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+@*    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />*@
+@*    <link rel="stylesheet" href="~/WHM.FE.styles.css" asp-append-version="true" />*@
+
+    <link rel="icon" type="image/x-icon" href="/image/logowarehouse.png">
+    <title>@ViewData["Title"] - WareHouse Management</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.min.js"
+            integrity="sha512-fHY2UiQlipUq0dEabSM4s+phmn+bcxSYzXP4vAXItBvBHU7zAM/mkhCZjtBEIJexhOMzZbgFlPLuErlJF2b+0g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+            integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css"
+          integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/Layout.css">
+</head>
+<body>
+    <nav class="nav--bar">
+        <ul>
+            <li>
+                <a href="/Common/Dashboard" class="logo">
+                    <img src="~/image/logowarehouse.png" alt="">
+                    <span class="nav-item">WareHouse Management</span>
+                </a>
+            </li>
+            <li>
+                <a href="/Common/Dashboard">
+                    <i class="fas fa-solid fa-server"></i>
+                    <span class="nav-item">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-solid fa-file-invoice-dollar"></i>
+                    <span class="nav-item">Bill</span>
+                </a>
+            </li>
+            <li>
+                <a href="/Supplier/SupplierList">
+                    <i class="fas fa-solid fa-list"></i>
+                    <span class="nav-item">Supplier</span>
+                </a>
+            </li>
+            <li>
+                <a href="/Product/ProductList">
+                    <i class="fas fa-solid fa-box"></i>
+                    <span class="nav-item">Product</span>
+                </a>
+            </li>
+            <li>
+                <a href="/Category/CategoryList">
+                    <i class="fas fa-solid fa-outdent"></i>
+                    <span class="nav-item">Category</span>
+                </a>
+            </li>
+            <li>
+                <a href="/Attribute/">
+                    <i class="fas fa-solid fa-outdent"></i>
+                    <span class="nav-item">Attribute</span>
+                </a>
+            </li>
+            <li>
+                <a href="/User/UserList">
+                    <i class="fas fa-solid fa-users"></i>
+                    <span class="nav-item">User</span>
+                </a>
+            </li>
+            <li>
+                <a href="/Common/Index?handler=LogOut" class="logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span class="nav-item">Log Out</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="header">
+        <div class="search">
+            <form class="d-flex" method="post" action="Search">
+                <i class="fa-solid fa-magnifying-glass fa-xl"></i>
+                <input class="me-2" type="search" placeholder=" Search Anything..." aria-label="Search">
+                <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
+            </form>
+        </div>
+        <div class="users">
+            <div class="fas fa-user"></div>
+            <a href="#">Xin chào, @name</a>
+        </div>
+    </div>
+
+    <div>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+    </footer>
+
+@*    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>*@
+@*    <script>
+        window.addEventListener("scroll", function () {
+            var navbar = document.querySelector(".nav--bar");
+            navbar.style.top = Math.max(0, window.scrollY) + "px";
+        });
+    </script>*@
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

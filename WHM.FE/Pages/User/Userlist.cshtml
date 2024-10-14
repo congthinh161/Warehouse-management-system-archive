@@ -1,0 +1,51 @@
+﻿@page
+@using WHM.Data.Dtos.Responses;
+
+@model WHM.FE.Pages.User.UserlistModel
+@{
+    var users = (List<UserInfoResponseDto>)ViewData["Users"];
+}
+<link rel="stylesheet" href="/css/ProductList.css">
+<div class="main-container">
+    <div class="tabular--wrapper">
+        <h3 class="header--title">User Manager</h3>
+        <div class="d-flex mt-4">
+            <a class="button--link" href="/User/Register">
+                <button class="btn btn-success" id="Create"><i class="fa-solid fa-user-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;Create</button>
+            </a>
+        </div>
+    </div>
+
+    <div class="tabular--wrapper">
+        <h3 class="header--title">User List</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Username</th>
+                        <th>Role Name</th>
+                        <th>Register Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var (value, i) in users.Select((value, i) => ( value, i )))
+                    {
+                        <tr>
+                            <td>@(i+1)</td>
+                            <td>@value.UserName</td>
+                            <td>@value.RoleName</td>
+                            <td>@value.RegistrationDate</td>
+                            <td>
+                                <a href="#">
+                                    <button class="btn btn-success" id="Create">Edit</button>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

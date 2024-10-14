@@ -1,0 +1,26 @@
+﻿@page
+@model WHM.FE.Pages.Supplier.EditModel
+@{
+}
+<link rel="stylesheet" href="/css/ProductList.css" />
+<div class="main-container">
+    <div class="tabular--wrapper">
+        <h3 class="header--title">Add Supplier</h3>
+        <div class="b row">
+            <form class="mt-5 col-md-4" method="post">
+                <input class="visually-hidden" value="@Model.SuplierId"/>
+                <label class="form-label"> DisplayName :</label>
+                <input class="form-control" name="DisplayName" value="@Model.DisplayName" type="text" placeholder="Input Name" /></br>
+                <label class="form-label"> Address :</label>
+                <input class="form-control" name="Address" value="@Model.Address" type="text" placeholder="Input Address" /></br>
+                <label class="form-label"> Phone :</label>
+                <input class="form-control" name="Phone" value="@Model.Phone" type="text" placeholder="Input Phone" /></br>
+                <label class="form-label"> Email :</label>
+                <input class="form-control" name="Email" value="@Model.Email" type="text" placeholder="Input Email" /></br>
+                <label class="form-label"> MoreInfo :</label>
+                <textarea class="form-control" name="MoreInfo" asp-for="MoreInfo" style="height:150px;" placeholder="MoreInfo Here..."></textarea>
+                <button class="btn btn-success mt-5">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
